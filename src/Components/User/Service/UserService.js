@@ -1,9 +1,14 @@
 import axios from "axios";
 import authHeader from "../../Auth/Components/Service/auth-header";
+import AuthService from "../../Auth/Components/Service/auth-service";
 
 const API_URL = "http://localhost:8080";
 
 class UserService {
+  getCurrentUser() {
+    return AuthService.getCurrentUser();
+  }
+
   getCustomerPets(customerId) {
     return axios.get(`${API_URL}/customers/${customerId}/pets`, {
       headers: authHeader(),
@@ -26,6 +31,19 @@ class UserService {
     return axios.get(`${API_URL}/customers/${customerId}/questions`, {
       headers: authHeader(),
     });
+  }
+
+  makeAppointment(customerId, reason, date, hour) {
+    axios.post(
+      `${API_URL}/customers/${customerId}/appointments`,
+      {
+        reason: reason,
+        dateOfAppointment: new Date(date),
+        hour: hour,
+      },
+      { headers: authHeader() }
+    );
+    console.log(new Date());
   }
 }
 

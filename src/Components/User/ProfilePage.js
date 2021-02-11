@@ -5,6 +5,7 @@ import AuthService from "../Auth/Components/Service/auth-service";
 import axios from "axios";
 import authHeader from "../Auth/Components/Service/auth-header";
 import userService from "./Service/UserService";
+import AppointmentForm from "../AppointmentForm";
 
 export default function Profile(props) {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
@@ -42,6 +43,11 @@ export default function Profile(props) {
       .then((res) => setquestions(res.data));
   }
 
+  function formatDate(date) {
+    var parsedDate = new Date(date);
+    return parsedDate.toLocaleDateString();
+  }
+
   return (
     <div>
       <ul>
@@ -67,8 +73,8 @@ export default function Profile(props) {
       <ul>
         {appointments.map((app) => (
           <li>
-            {app.reason} - {app.dateOfAppointment} -{" "}
-            {app.accepted ? "Accepted" : "Declined"}
+            {app.reason} - {formatDate(app.dateOfAppointment)} - At {app.hour} -
+            Status: {app.accepted ? "Accepted" : "Declined"}
           </li>
         ))}
       </ul>
@@ -87,7 +93,7 @@ export default function Profile(props) {
       <hr />
       <div>
         <h2>Make an appointment</h2>
-        
+        <AppointmentForm />
       </div>
     </div>
   );
