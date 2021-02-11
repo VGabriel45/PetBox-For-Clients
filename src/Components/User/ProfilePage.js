@@ -65,6 +65,7 @@ export default function Profile(props) {
         <li>Phone number: {user.phoneNumber}</li>
       </ul>
       <br />
+      <hr />
       Your pets :
       <br />
       <ul>
@@ -75,23 +76,35 @@ export default function Profile(props) {
         ))}
       </ul>
       <br />
+      <hr />
       Your appointments:
       <br />
       <ul>
         {appointments.map((app) => (
           <li>
             {app.reason} - {formatDateWithoutTime(app.dateOfAppointment)} - At{" "}
-            {app.hour} - Status: {app.accepted ? "Accepted" : "Declined"}
+            {app.hour} - Status:{" "}
+            {app.accepted ? (
+              <p style={{ color: "green" }}>Accepted</p>
+            ) : (
+              <p style={{ color: "red" }}>Declined</p>
+            )}
           </li>
         ))}
       </ul>
+      <hr />
       Your questions:
       <br />
       <ul>
         {questions.map((q) => (
           <li>
             {q.text} - {formatDateWithTime(q.date)} -{" "}
-            {q.solved ? "Answered" : "Not yet answered"}
+            {q.solved ? "Answered" : "Not yet answered"} -{" "}
+            {q.seen ? (
+              <small style={{ color: "green" }}>Seen</small>
+            ) : (
+              <small style={{ color: "red" }}>Not seen</small>
+            )}
             <br />
             <p>Response: {q.response ? q.response : "Waiting for response"}</p>
           </li>
