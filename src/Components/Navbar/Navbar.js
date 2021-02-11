@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import AuthService from "../Services/auth.service";
+import AuthService from "../Auth/Components/Service/auth-service";
 
 export default function Navbar() {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
@@ -69,11 +69,7 @@ export default function Navbar() {
                     </Link>
                   </li>
 
-                  <li className="nav-item">
-                    <Link to={"/register"} className="nav-link">
-                      Sign Up
-                    </Link>
-                  </li>
+                  
                 </div>
               )}
             </ul>
