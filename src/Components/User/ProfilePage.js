@@ -6,6 +6,7 @@ import axios from "axios";
 import authHeader from "../Auth/Components/Service/auth-header";
 import userService from "./Service/UserService";
 import AppointmentForm from "../AppointmentForm";
+import QuestionForm from "../QuestionForm";
 
 export default function Profile(props) {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
@@ -43,9 +44,15 @@ export default function Profile(props) {
       .then((res) => setquestions(res.data));
   }
 
-  function formatDate(date) {
+  function formatDateWithoutTime(date) {
     var parsedDate = new Date(date);
     return parsedDate.toLocaleDateString();
+  }
+
+  function formatDateWithTime(date) {
+    var dateFormat = require("dateformat");
+    var parsedDate = new Date(date);
+    return dateFormat(parsedDate, "dddd, mmmm dS, yyyy, h:MM:ss TT");
   }
 
   return (
@@ -73,8 +80,8 @@ export default function Profile(props) {
       <ul>
         {appointments.map((app) => (
           <li>
-            {app.reason} - {formatDate(app.dateOfAppointment)} - At {app.hour} -
-            Status: {app.accepted ? "Accepted" : "Declined"}
+            {app.reason} - {formatDateWithoutTime(app.dateOfAppointment)} - At{" "}
+            {app.hour} - Status: {app.accepted ? "Accepted" : "Declined"}
           </li>
         ))}
       </ul>
@@ -83,9 +90,10 @@ export default function Profile(props) {
       <ul>
         {questions.map((q) => (
           <li>
-            {q.text} - {q.date} - {q.solved ? "Answered" : "Not yet answered"}
+            {q.text} - {formatDateWithTime(q.date)} -{" "}
+            {q.solved ? "Answered" : "Not yet answered"}
             <br />
-            <p>Response: {q.response}</p>
+            <p>Response: {q.response ? q.response : "Waiting for response"}</p>
           </li>
         ))}
       </ul>
@@ -94,6 +102,11 @@ export default function Profile(props) {
       <div>
         <h2>Make an appointment</h2>
         <AppointmentForm />
+      </div>
+      <br />
+      <div>
+        <h2>Ask a question</h2>
+        <QuestionForm />
       </div>
     </div>
   );

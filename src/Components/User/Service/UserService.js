@@ -43,7 +43,18 @@ class UserService {
       },
       { headers: authHeader() }
     );
-    console.log(new Date());
+  }
+
+  sendQuestion(customerId, author, text, date) {
+    axios.post(
+      `${API_URL}/customers/${customerId}/questions`,
+      {
+        text: text,
+        date: new Date(date),
+        author: author,
+      },
+      { headers: authHeader() }
+    );
   }
 }
 

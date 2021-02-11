@@ -23,7 +23,6 @@ export default function AppointmentForm() {
       <form
         className="form-signin"
         method="post"
-        //   action="/pets"
         onSubmit={submitForm}
       >
         <div className="mb-3">
