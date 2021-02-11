@@ -20,11 +20,7 @@ export default function AppointmentForm() {
 
   return (
     <div>
-      <form
-        className="form-signin"
-        method="post"
-        onSubmit={submitForm}
-      >
+      <form className="form-signin" method="post" onSubmit={submitForm}>
         <div className="mb-3">
           <label htmlFor="reason" className="form-label">
             Reason of appointment

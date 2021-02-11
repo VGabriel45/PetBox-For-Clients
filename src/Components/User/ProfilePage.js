@@ -7,6 +7,7 @@ import authHeader from "../Auth/Components/Service/auth-header";
 import userService from "./Service/UserService";
 import AppointmentForm from "../AppointmentForm";
 import QuestionForm from "../QuestionForm";
+import { Auth } from "auth0-react";
 
 export default function Profile(props) {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
