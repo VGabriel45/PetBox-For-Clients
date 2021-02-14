@@ -41,7 +41,7 @@ export default function Profile(props) {
 
   function getCustomerQuestions() {
     return userService
-      .getCustomerQuestions(currentUser.id)
+      .getCustomerQuestions(currentUser.id, setquestions)
       .then((res) => setquestions(res.data));
   }
 

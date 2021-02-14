@@ -9,6 +9,8 @@ class UserService {
     return AuthService.getCurrentUser();
   }
 
+  setUserQuestions() {}
+
   getCustomerPets(customerId) {
     return axios.get(`${API_URL}/customers/${customerId}/pets`, {
       headers: authHeader(),

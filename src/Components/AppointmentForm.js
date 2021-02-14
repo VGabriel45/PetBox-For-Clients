@@ -1,6 +1,7 @@
 import React from "react";
 import userService from "./User/Service/UserService";
 import { useHistory } from "react-router-dom";
+import AuthService from "./Auth/Components/Service/auth-service";
 
 export default function AppointmentForm() {
   const history = useHistory();
@@ -14,8 +15,7 @@ export default function AppointmentForm() {
       data.get("date"),
       data.get("time")
     );
-
-    history.push("/");
+    window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   return (

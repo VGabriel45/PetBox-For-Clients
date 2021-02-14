@@ -1,6 +1,7 @@
 import React from "react";
 import userService from "./User/Service/UserService";
 import { useHistory } from "react-router-dom";
+import AuthService from "./Auth/Components/Service/auth-service";
 
 export default function QuestionForm() {
   const history = useHistory();
@@ -16,7 +17,7 @@ export default function QuestionForm() {
       new Date()
     );
 
-    history.push("/");
+    window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   return (
