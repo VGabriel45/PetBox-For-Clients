@@ -1,15 +1,14 @@
 import axios from "axios";
+import { Component } from "react";
 import authHeader from "../../Auth/Components/Service/auth-header";
 import AuthService from "../../Auth/Components/Service/auth-service";
 
 const API_URL = "http://localhost:8080";
 
-class UserService {
+class UserService extends Component {
   getCurrentUser() {
     return AuthService.getCurrentUser();
   }
-
-  setUserQuestions() {}
 
   getCustomerPets(customerId) {
     return axios.get(`${API_URL}/customers/${customerId}/pets`, {
@@ -47,9 +46,15 @@ class UserService {
     );
   }
 
-  sendQuestion(customerId, author, text, date) {
+  async sendQuestion(customerId, author, text, date) {
+    const response = await fetch(`${API_URL}/customers/${customerId}`, {
+      headers: authHeader(),
+    });
+    const customer = await response.json();
+    const clinicId = customer.clinic.id;
+    
     axios.post(
-      `${API_URL}/customers/${customerId}/questions`,
+      `${API_URL}/clinic/${clinicId}/customers/${customerId}/questions`,
       {
         text: text,
         date: new Date(date),
