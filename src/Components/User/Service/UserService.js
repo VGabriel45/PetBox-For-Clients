@@ -52,7 +52,7 @@ class UserService extends Component {
     });
     const customer = await response.json();
     const clinicId = customer.clinic.id;
-    
+
     axios.post(
       `${API_URL}/clinic/${clinicId}/customers/${customerId}/questions`,
       {

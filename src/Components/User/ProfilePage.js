@@ -107,7 +107,7 @@ export default function Profile(props) {
               <small style={{ color: "red" }}>Not seen</small>
             )}
             <br />
-            <p>Response: {q.response ? q.response : "Waiting for response"}</p>
+            <p>{q.response ? "Response: " + q.response : ""}</p>
           </li>
         ))}
       </ul>

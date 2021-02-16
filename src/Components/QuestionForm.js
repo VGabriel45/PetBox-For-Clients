@@ -17,7 +17,7 @@ export default function QuestionForm() {
       new Date()
     );
 
-    window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
+    // window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   return (
