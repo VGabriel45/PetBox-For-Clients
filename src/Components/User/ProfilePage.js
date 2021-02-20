@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import ClearIcon from "@material-ui/icons/Clear";
-import CheckIcon from "@material-ui/icons/Check";
 import AuthService from "../Auth/Components/Service/auth-service";
-import axios from "axios";
-import authHeader from "../Auth/Components/Service/auth-header";
 import userService from "./Service/UserService";
 import AppointmentForm from "../AppointmentForm";
 import QuestionForm from "../QuestionForm";
-import { Auth } from "auth0-react";
+import { Link } from "react-router-dom";
+import UserDetailsForm from "./UserDetailsForm";
 
 export default function Profile(props) {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
@@ -15,6 +12,7 @@ export default function Profile(props) {
   const [userPets, setuserPets] = useState([]);
   const [appointments, setappointments] = useState([]);
   const [questions, setquestions] = useState([]);
+  var show = false;
 
   useEffect(() => {
     getUser();
@@ -56,6 +54,10 @@ export default function Profile(props) {
     return dateFormat(parsedDate, "dddd, mmmm dS, yyyy, h:MM:ss TT");
   }
 
+  function showForm() {
+    return <UserDetailsForm />;
+  }
+
   return (
     <div>
       <ul>
@@ -65,6 +67,13 @@ export default function Profile(props) {
         <li>Your address: {user.address}</li>
         <li>Phone number: {user.phoneNumber}</li>
       </ul>
+      <br />
+      <Link
+        to={`/myProfile/${currentUser.id}/update`}
+        className="btn btn-warning"
+      >
+        Edit details
+      </Link>
       <br />
       <hr />
       Your pets :
