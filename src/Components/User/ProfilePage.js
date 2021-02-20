@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AuthService from "../Auth/Components/Service/auth-service";
 import userService from "./Service/UserService";
-import AppointmentForm from "../AppointmentForm";
+import AppointmentForm from "./AppointmentForm";
 import QuestionForm from "../QuestionForm";
 import { Link } from "react-router-dom";
 import UserDetailsForm from "./UserDetailsForm";
@@ -12,7 +12,6 @@ export default function Profile(props) {
   const [userPets, setuserPets] = useState([]);
   const [appointments, setappointments] = useState([]);
   const [questions, setquestions] = useState([]);
-  var show = false;
 
   useEffect(() => {
     getUser();
@@ -52,10 +51,6 @@ export default function Profile(props) {
     var dateFormat = require("dateformat");
     var parsedDate = new Date(date);
     return dateFormat(parsedDate, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-  }
-
-  function showForm() {
-    return <UserDetailsForm />;
   }
 
   return (

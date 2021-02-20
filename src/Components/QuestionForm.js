@@ -2,6 +2,19 @@ import React from "react";
 import userService from "./User/Service/UserService";
 import { useHistory } from "react-router-dom";
 import AuthService from "./Auth/Components/Service/auth-service";
+import { Link } from "react-router-dom";
+
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  TextField,
+  makeStyles,
+} from "@material-ui/core";
 
 export default function QuestionForm() {
   const history = useHistory();
@@ -23,21 +36,30 @@ export default function QuestionForm() {
   return (
     <div>
       <form className="form-signin" method="post" onSubmit={submitForm}>
-        <div className="mb-3">
-          <label htmlFor="text" className="form-label">
-            Type your question
-          </label>
-          <textarea
-            style={{ width: "30%", height: "200px" }}
-            type="text"
-            className="form-control"
-            id="text"
-            name="text"
+        <CardContent style={{ width: "100%", margin: "auto" }}>
+          <CardHeader
+            subheader="We will try to respond as soon as posible"
+            title="Ask us a question..."
           />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+          <Link to={`/myProfile/${userService.getCurrentUser().id}`}>
+            Back to profile
+          </Link>
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Type your question
+            </label>
+            <textarea
+              style={{ width: "30%", height: "200px" }}
+              type="text"
+              className="form-control"
+              id="text"
+              name="text"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </CardContent>
       </form>
     </div>
   );
