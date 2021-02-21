@@ -5,10 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import AuthService from "../Auth/Components/Service/auth-service";
 import { useHistory } from "react-router-dom";
-import moment from "moment";
 
 import { Link } from "react-router-dom";
 
@@ -55,22 +53,49 @@ export default function Appbar() {
                     className="nav-link"
                     style={{ color: "white" }}
                   >
-                    {currentUser.username}
+                    <strong>My profile</strong>
+                  </Link>
+                </Button>
+                <Button color="inherit">
+                  <Link
+                    to={`/myProfile/${currentUser.id}/pets`}
+                    className="nav-link"
+                    style={{ color: "white" }}
+                  >
+                    My pets
+                  </Link>
+                </Button>
+                <Button color="inherit">
+                  <Link
+                    to={`/myProfile/${currentUser.id}/questions`}
+                    className="nav-link"
+                    style={{ color: "white" }}
+                  >
+                    My questions
+                  </Link>
+                </Button>
+                <Button color="inherit">
+                  <Link
+                    to={`/myProfile/${currentUser.id}/appointments`}
+                    className="nav-link"
+                    style={{ color: "white" }}
+                  >
+                    My appointments
                   </Link>
                 </Button>
               </Typography>
-              <Typography variant="h6" className={classes.title}>
-                <Button color="inherit" onClick={logOut}>
-                  Logout
-                </Button>
-              </Typography>
+              <Typography variant="h6" className={classes.title}></Typography>
               <Typography
                 className={classes.dateText}
                 color="textSecondary"
                 variant="body1"
                 style={{ color: "white" }}
               >
-                {`${moment().format("hh:mm A")}`}
+                <Typography variant="h6" className={classes.title}>
+                  <Button color="inherit" onClick={logOut}>
+                    Logout
+                  </Button>
+                </Typography>
               </Typography>
             </React.Fragment>
           ) : (

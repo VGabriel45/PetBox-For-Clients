@@ -8,6 +8,9 @@ import EditProfilePage from "./Components/User/EditProfilePage";
 import Profile from "./Components/User/index";
 import AppointmentForm from "./Components/User/AppointmentForm";
 import QuestionForm from "./Components/QuestionForm";
+import PetsPage from "./Components/User/PetsPage";
+import QuestionsPage from "./Components/User/QuestionsPage";
+import AppointmentsPage from "./Components/User/AppointmentsPage";
 
 function App() {
   return (
@@ -27,6 +30,17 @@ function App() {
           path="/myProfile/:id/askQuestion"
           exact
           component={QuestionForm}
+        />
+        <Route path="/myProfile/:id/pets" exact component={PetsPage} />
+        <Route
+          path="/myProfile/:id/questions"
+          exact
+          component={QuestionsPage}
+        />
+        <Route
+          path="/myProfile/:id/appointments"
+          exact
+          component={AppointmentsPage}
         />
       </Switch>
     </Router>

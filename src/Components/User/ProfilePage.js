@@ -4,7 +4,6 @@ import userService from "./Service/UserService";
 import AppointmentForm from "./AppointmentForm";
 import QuestionForm from "../QuestionForm";
 import { Link } from "react-router-dom";
-import UserDetailsForm from "./UserDetailsForm";
 
 export default function Profile(props) {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
