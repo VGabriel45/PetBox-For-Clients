@@ -11,6 +11,7 @@ import QuestionForm from "./Components/QuestionForm";
 import PetsPage from "./Components/User/PetsPage";
 import QuestionsPage from "./Components/User/QuestionsPage";
 import AppointmentsPage from "./Components/User/AppointmentsPage";
+import PetDetailsPage from "./Components/User/Pets/PetDetailsPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           component={QuestionForm}
         />
         <Route path="/myProfile/:id/pets" exact component={PetsPage} />
+        <Route path="/myProfile/:id/pets/:petId/details" exact component={PetDetailsPage} />
         <Route
           path="/myProfile/:id/questions"
           exact

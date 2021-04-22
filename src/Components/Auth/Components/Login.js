@@ -117,7 +117,7 @@ export default class Login extends Component {
               <Avatar style={avatarStyle}>
                 <LockOpenIcon></LockOpenIcon>
               </Avatar>
-              <h2 className="mt-4">Sign in</h2>
+              <h2 className="mt-4">Login to PetBox</h2>
             </Grid>
             <TextField
               id="username"
@@ -155,7 +155,7 @@ export default class Login extends Component {
               variant="contained"
               style={btnStyle}
             >
-              Sign In
+              Login
             </Button>
           </Paper>
 

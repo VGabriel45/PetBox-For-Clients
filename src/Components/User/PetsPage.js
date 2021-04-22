@@ -48,11 +48,11 @@ export default function PetsPage() {
 
   useEffect(() => {
     getUser();
-    getPets();
+    // getPets();
   }, []);
 
   async function getUser() {
-    return userService.getUser(currentUser.id).then((res) => setuser(res.data));
+    return userService.getUser(currentUser.id).then((res) => setuser(res.data)).then(getPets());
   }
 
   function getPets() {
@@ -79,10 +79,10 @@ export default function PetsPage() {
           </TableHead>
           <TableBody>
             {userPets.map((pet) => (
-              <StyledTableRow key={currentUser.id}>
+              < StyledTableRow key={currentUser.id} >
                 <StyledTableCell component="th" scope="row">
                   <Link
-                    to={`/pets/${pet.id}`}
+                    to={`/myProfile/${currentUser.id}/pets/${pet.id}/details`}
                     style={{ textDecoration: "none" }}
                   >
                     {pet.name}
@@ -98,7 +98,7 @@ export default function PetsPage() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer >
     );
   }
 

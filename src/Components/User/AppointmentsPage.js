@@ -94,10 +94,10 @@ export default function QuestionsPage() {
                   {a.accepted
                     ? "Accepted"
                     : !a.accepted && !a.declined
-                    ? "Waiting"
-                    : a.declined
-                    ? "Declined"
-                    : "Waiting"}
+                      ? "Waiting"
+                      : a.declined
+                        ? "Declined"
+                        : "Waiting"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {a.status ? "Finished" : "In progress"}
