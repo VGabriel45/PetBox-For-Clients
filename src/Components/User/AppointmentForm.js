@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import userService from "./Service/UserService";
 import { useHistory } from "react-router-dom";
 import AuthService from "../Auth/Components/Service/auth-service";
@@ -19,6 +19,12 @@ import {
 export default function AppointmentForm() {
   const history = useHistory();
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
+  const [customerPets, setcustomerPets] = useState({})
+
+  useEffect(() => {
+    getCustomerPets();
+  }, [])
+
   function submitForm(e) {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -30,6 +36,10 @@ export default function AppointmentForm() {
       data.get("time")
     );
     window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
+  }
+
+  function getCustomerPets() {
+    userService.getCustomerPets(currentUser.id).then((res) => setcustomerPets(res.data));
   }
 
   return (
@@ -75,6 +85,8 @@ export default function AppointmentForm() {
                 name="time"
               />
             </div>
+            {console.log(customerPets)}
+            {/* <select name="pets" id="pets" defaultValue="Select a pet">{customerPets.map((p) => <option value={p.name}></option>)}</select> */}
             <button type="submit" className="btn btn-primary">
               Submit
             </button>

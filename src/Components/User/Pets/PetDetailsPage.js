@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PetDetailsPageLogic from './PetDetailsPageLogic';
 import AuthService from "../../Auth/Components/Service/auth-service";
+
+import firebase from '../../firebase/firebase';
 
 export default function PetDetailsPage(props) {
 
@@ -10,7 +12,7 @@ export default function PetDetailsPage(props) {
     const petId = params.petId;
 
     const currentUser = AuthService.getCurrentUser();
-    const { pet } = PetDetailsPageLogic({ customerId: currentUser.id, petId: petId });
+    const { pet, onChangeImage, petImage } = PetDetailsPageLogic({ customerId: currentUser.id, petId: petId });
 
     return (
         <React.Fragment>
@@ -20,6 +22,18 @@ export default function PetDetailsPage(props) {
             <h1>Pet race: {pet.race}</h1>
             <h1>Pet age: {pet.age}</h1>
             <h1>Pet color: {pet.color}</h1>
+            <img src={petImage} alt="petImage" />
+            <form>
+                <div>
+                    <input
+                        type="file"
+                        id="petImage"
+                        name="petImage"
+                        className="form-control"
+                        onChange={onChangeImage}
+                    />
+                </div>
+            </form>
         </React.Fragment>
     );
 }

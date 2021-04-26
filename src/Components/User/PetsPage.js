@@ -72,7 +72,6 @@ export default function PetsPage() {
               <StyledTableCell align="right">Age</StyledTableCell>
               <StyledTableCell align="right">Race</StyledTableCell>
               <StyledTableCell align="right">Gender</StyledTableCell>
-              <StyledTableCell align="right">Gender</StyledTableCell>
               <StyledTableCell align="right">Color</StyledTableCell>
               <StyledTableCell align="right">Type</StyledTableCell>
             </TableRow>
@@ -90,7 +89,6 @@ export default function PetsPage() {
                 </StyledTableCell>
                 <StyledTableCell align="right">{pet.age}</StyledTableCell>
                 <StyledTableCell align="right">{pet.race}</StyledTableCell>
-                <StyledTableCell align="right">{pet.gender}</StyledTableCell>
                 <StyledTableCell align="right">{pet.gender}</StyledTableCell>
                 <StyledTableCell align="right">{pet.color}</StyledTableCell>
                 <StyledTableCell align="right">{pet.type}</StyledTableCell>

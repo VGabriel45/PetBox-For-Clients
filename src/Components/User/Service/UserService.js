@@ -3,6 +3,8 @@ import { Component } from "react";
 import authHeader from "../../Auth/Components/Service/auth-header";
 import AuthService from "../../Auth/Components/Service/auth-service";
 
+import firebase from '../../Firebase/firebase';
+
 const API_URL = "http://localhost:8080";
 
 class UserService extends Component {
@@ -62,6 +64,13 @@ class UserService extends Component {
       },
       { headers: authHeader() }
     );
+  }
+
+  async getUserImage(customerId) {
+    let storageRef = firebase.storage().ref();
+    let fileRef = storageRef.child(await customerId);
+    console.log(customerId)
+    return await fileRef.getDownloadURL();
   }
 }
 
