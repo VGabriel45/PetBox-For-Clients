@@ -82,7 +82,13 @@ export default function QuestionsPage() {
           <TableBody>
             {appointments.map((a) => (
               <StyledTableRow key={currentUser.id}>
-                <StyledTableCell align="right">{a.reason}</StyledTableCell>
+
+                <StyledTableCell align="right"><Link
+                  to={`/myProfile/${currentUser.id}/appointments/${a.id}/details`}
+                  style={{ textDecoration: "none" }}
+                >
+                  {a.reason}
+                </Link></StyledTableCell>
                 <StyledTableCell align="right">
                   {formatDateWithoutTime(a.dateOfAppointment)}
                 </StyledTableCell>

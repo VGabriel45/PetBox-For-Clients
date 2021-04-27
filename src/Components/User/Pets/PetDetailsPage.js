@@ -2,8 +2,6 @@ import React from 'react';
 import PetDetailsPageLogic from './PetDetailsPageLogic';
 import AuthService from "../../Auth/Components/Service/auth-service";
 
-import firebase from '../../firebase/firebase';
-
 export default function PetDetailsPage(props) {
 
     const {
