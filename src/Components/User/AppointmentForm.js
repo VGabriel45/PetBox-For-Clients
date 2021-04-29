@@ -35,11 +35,12 @@ export default function AppointmentForm() {
       data.get("date"),
       data.get("time")
     );
-    window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
+    history.push(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
-  function getCustomerPets() {
-    userService.getCustomerPets(currentUser.id).then((res) => setcustomerPets(res.data));
+  async function getCustomerPets() {
+    const resp = await userService.getCustomerPets(currentUser.id);
+
   }
 
   return (

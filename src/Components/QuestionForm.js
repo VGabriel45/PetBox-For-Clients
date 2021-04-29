@@ -30,7 +30,7 @@ export default function QuestionForm() {
       new Date()
     );
 
-    // window.location.reload(`/myProfile/${AuthService.getCurrentUser().id}`);
+    history.push(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   return (

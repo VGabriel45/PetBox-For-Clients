@@ -12,6 +12,8 @@ import PetsPage from "./Components/User/PetsPage";
 import QuestionsPage from "./Components/User/QuestionsPage";
 import AppointmentsPage from "./Components/User/AppointmentsPage";
 import PetDetailsPage from "./Components/User/Pets/PetDetailsPage";
+import QuestionDetailsPage from "./Components/User/Questions/QuestionDetailsPage";
+import AppointmentDetailsPage from "./Components/User/Appointments/AppointmentDetailsPage";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         />
         <Route path="/myProfile/:id/pets" exact component={PetsPage} />
         <Route path="/myProfile/:id/pets/:petId/details" exact component={PetDetailsPage} />
+        <Route path="/myProfile/:id/questions/:questionId/details" exact component={QuestionDetailsPage} />
+        <Route path="/myProfile/:id/appointments/:appointmentId/details" exact component={AppointmentDetailsPage} />
         <Route
           path="/myProfile/:id/questions"
           exact

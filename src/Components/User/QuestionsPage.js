@@ -84,7 +84,7 @@ export default function QuestionsPage() {
               <StyledTableRow key={currentUser.id}>
                 <StyledTableCell component="th" scope="row">
                   <Link
-                    to={`/questions/${q.id}`}
+                    to={`/myProfile/${currentUser.id}/questions/${q.id}/details`}
                     style={{ textDecoration: "none" }}
                   >
                     {q.text}
@@ -97,7 +97,7 @@ export default function QuestionsPage() {
                   {q.seen ? "Seen" : "Not seen"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  {q.status ? "Solved" : "Waiting"}
+                  {q.solved ? "Solved" : "Waiting"}
                 </StyledTableCell>
                 <StyledTableCell align="right">{q.response}</StyledTableCell>
                 {console.log(q)}
