@@ -118,7 +118,7 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>My appointments</h1>
       {appointmentsTable()}
     </div>

@@ -23,7 +23,6 @@ const PetDetailsPageLogic = ({ customerId, petId }) => {
     };
 
     const onChangeImage = async (e) => {
-        // setpetImage({ image: e.target.files[0] });
         const file = await e.target.files[0];
         let storageRef = firebase.storage().ref();
         let fileRef = storageRef.child(petId);
