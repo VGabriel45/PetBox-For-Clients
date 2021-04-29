@@ -65,13 +65,6 @@ class UserService extends Component {
       { headers: authHeader() }
     );
   }
-
-  async getUserImage(customerId) {
-    let storageRef = firebase.storage().ref();
-    let fileRef = storageRef.child(await customerId);
-    console.log(customerId)
-    return await fileRef.getDownloadURL();
-  }
 }
 
 export default new UserService();

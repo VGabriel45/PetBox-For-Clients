@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import AuthService from "../Auth/Components/Service/auth-service";
 
 export default function Navbar() {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
+  const history = useHistory();
 
   function logOut() {
     AuthService.logout();
+    history.push("/login");
+    // redirect to login after logout
   }
 
   return (
