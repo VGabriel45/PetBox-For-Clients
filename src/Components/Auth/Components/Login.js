@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import { Container, Row, Col } from "reactstrap";
 
 import AuthService from "./Service/auth-service";
+import GeneralForm from "../../FormComponents/GeneralForm";
 
 const required = (value) => {
   if (!value) {
@@ -105,75 +106,85 @@ export default class Login extends Component {
 
   render() {
     return (
-      <Grid>
-        <Form
-          onSubmit={this.handleLogin}
-          ref={(c) => {
-            this.form = c;
-          }}
-        >
-          <Paper elevation={10} style={paperStyle}>
-            <Grid align="center" className="mt-2">
-              <Avatar style={avatarStyle}>
-                <LockOpenIcon></LockOpenIcon>
-              </Avatar>
-              <h2 className="mt-4">Login to PetBox</h2>
-            </Grid>
-            <TextField
-              id="username"
-              name="username"
-              label="Username"
-              placeholder="Enter username"
-              fullWidth
-              variant="filled"
-              className="mt-4"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-              validations={[required]}
-            />
-            <Grid className="mt-4"></Grid>
-            <TextField
-              id="password"
-              name="password"
-              label="password"
-              placeholder="Enter password"
-              type="password"
-              fullWidth
-              variant="filled"
-              className="mt-4"
-              value={this.state.password}
-              onChange={this.onChangePassword}
-              validations={[required]}
-            />
-            <Button
+      <div className="container is-max-desktop box mt-5">
+        {/* <Grid>
+          <Form
+            onSubmit={this.handleLogin}
+            ref={(c) => {
+              this.form = c;
+            }}
+            style={{ margin: "0px" }}
+          >
+            <Paper elevation={10} style={paperStyle}>
+              <Grid align="center" className="mt-2">
+                <Avatar style={avatarStyle}>
+                  <LockOpenIcon></LockOpenIcon>
+                </Avatar>
+                <h2 className="mt-4">Login to PetBox</h2>
+              </Grid>
+              <TextField
+                id="username"
+                name="username"
+                label="Username"
+                placeholder="Enter username"
+                fullWidth
+                variant="filled"
+                className="mt-4"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                validations={[required]}
+              />
+              <Grid className="mt-4"></Grid>
+              <TextField
+                id="password"
+                name="password"
+                label="password"
+                placeholder="Enter password"
+                type="password"
+                fullWidth
+                variant="filled"
+                className="mt-4"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                validations={[required]}
+              />
+              <Button
+                ref={(c) => {
+                  this.checkBtn = c;
+                }}
+                type="submit"
+                color="primary"
+                fullWidth
+                variant="contained"
+                style={btnStyle}
+              >
+                Login
+              </Button>
+            </Paper>
+
+            {this.state.message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {this.state.message}
+                </div>
+              </div>
+            )}
+            <CheckButton
+              style={{ display: "none" }}
               ref={(c) => {
                 this.checkBtn = c;
               }}
-              type="submit"
-              color="primary"
-              fullWidth
-              variant="contained"
-              style={btnStyle}
-            >
-              Login
-            </Button>
-          </Paper>
-
-          {this.state.message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {this.state.message}
-              </div>
-            </div>
-          )}
-          <CheckButton
-            style={{ display: "none" }}
-            ref={(c) => {
-              this.checkBtn = c;
-            }}
-          />
-        </Form>
-      </Grid>
+            />
+          </Form>
+        </Grid> */}
+        <Grid align="center" className="mt-2">
+          <Avatar style={avatarStyle}>
+            <LockOpenIcon></LockOpenIcon>
+          </Avatar>
+          <h2 className="mt-4">Login to PetBox</h2>
+        </Grid>
+        <GeneralForm />
+      </div>
     );
   }
 }
