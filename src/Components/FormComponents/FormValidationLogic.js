@@ -4,14 +4,15 @@ import authHeader from "../Auth/Components/Service/auth-header";
 
 const API_URL = "http://localhost:8080/customers";
 
-const FormValidationLogic = ({ username, email }) => {
+const FormValidationLogic = ({ username, password }) => {
   const [usernameValid, setusernameValid] = useState(false);
   const [emailValid, setemailValid] = useState(false);
+  const [passwordValid, setpasswordValid] = useState(false);
 
   useEffect(() => {
-    checkForEmail();
     checkForUsername();
-  }, [email, username]);
+    checkForPassword();
+  }, [password, username]);
 
   const checkForUsername = async () => {
     // CHECK IF USERNAME EXISTS IN DATABASE
@@ -25,19 +26,23 @@ const FormValidationLogic = ({ username, email }) => {
     );
   };
 
-  const checkForEmail = () => {
-    // CHECK IF USERNAME EXISTS IN DATABASE
-    // return axios.post(API_URL + "/checkIfEmailExists", { email });
+  //   const checkForEmail = () => {
+  //     // CHECK IF USERNAME EXISTS IN DATABASE
+  //     // return axios.post(API_URL + "/checkIfEmailExists", { email });
 
-    setemailValid(
-      (email.length >= 12 &&
-        email.length <= 50 &&
-        email.includes("@gmail.com")) ||
-        email.includes("@yahoo.com")
-    );
+  //     setemailValid(
+  //       (email.length >= 12 &&
+  //         email.length <= 50 &&
+  //         email.includes("@gmail.com")) ||
+  //         email.includes("@yahoo.com")
+  //     );
+  //   };
+
+  const checkForPassword = () => {
+    setpasswordValid(password.length == 12);
   };
 
-  return { checkForUsername, checkForEmail, usernameValid, emailValid };
+  return { checkForUsername, checkForPassword, usernameValid, passwordValid };
 };
 
 export default FormValidationLogic;

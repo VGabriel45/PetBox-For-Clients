@@ -40,7 +40,6 @@ export default function AppointmentForm() {
 
   async function getCustomerPets() {
     const resp = await userService.getCustomerPets(currentUser.id);
-
   }
 
   return (

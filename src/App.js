@@ -2,7 +2,6 @@ import "./App.css";
 import HomePage from "./Components/HomePage";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./Components/Auth/Components/Login";
 import ProfilePage from "./Components/User/ProfilePage";
 import EditProfilePage from "./Components/User/EditProfilePage";
 import Profile from "./Components/User/index";
@@ -14,6 +13,7 @@ import AppointmentsPage from "./Components/User/AppointmentsPage";
 import PetDetailsPage from "./Components/User/Pets/PetDetailsPage";
 import QuestionDetailsPage from "./Components/User/Questions/QuestionDetailsPage";
 import AppointmentDetailsPage from "./Components/User/Appointments/AppointmentDetailsPage";
+import LoginPage from "./Components/Auth/Components/LoginPage";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/home" exact component={HomePage} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/login" exact component={LoginPage} />
         <Route path="/myProfile/:id" exact component={Profile} />
         <Route path="/myProfile/:id/update" exact component={EditProfilePage} />
         <Route
@@ -35,9 +35,21 @@ function App() {
           component={QuestionForm}
         />
         <Route path="/myProfile/:id/pets" exact component={PetsPage} />
-        <Route path="/myProfile/:id/pets/:petId/details" exact component={PetDetailsPage} />
-        <Route path="/myProfile/:id/questions/:questionId/details" exact component={QuestionDetailsPage} />
-        <Route path="/myProfile/:id/appointments/:appointmentId/details" exact component={AppointmentDetailsPage} />
+        <Route
+          path="/myProfile/:id/pets/:petId/details"
+          exact
+          component={PetDetailsPage}
+        />
+        <Route
+          path="/myProfile/:id/questions/:questionId/details"
+          exact
+          component={QuestionDetailsPage}
+        />
+        <Route
+          path="/myProfile/:id/appointments/:appointmentId/details"
+          exact
+          component={AppointmentDetailsPage}
+        />
         <Route
           path="/myProfile/:id/questions"
           exact

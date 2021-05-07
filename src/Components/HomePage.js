@@ -10,7 +10,7 @@ export default function WelcomePage() {
   return (
     <React.Fragment>
       <Appbar />
-      <h1 className="titleç">
+      <h1 className="title">
         Welcome to petbox, when logging in please use the following format{" "}
         {"{username}"} - {"{clinic name}"}
       </h1>
