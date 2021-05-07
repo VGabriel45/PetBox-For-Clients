@@ -3,7 +3,7 @@ import { Component } from "react";
 import authHeader from "../../Auth/Components/Service/auth-header";
 import AuthService from "../../Auth/Components/Service/auth-service";
 
-import firebase from '../../Firebase/firebase';
+import firebase from "../../Firebase/firebase";
 
 const API_URL = "http://localhost:8080";
 
@@ -61,6 +61,7 @@ class UserService extends Component {
         text: text,
         date: new Date(date),
         author: author,
+        solved: false,
       },
       { headers: authHeader() }
     );

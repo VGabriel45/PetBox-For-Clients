@@ -54,6 +54,7 @@ export default function QuestionForm() {
               className="form-control"
               id="text"
               name="text"
+              required
             />
           </div>
           <button type="submit" className="btn btn-primary">
