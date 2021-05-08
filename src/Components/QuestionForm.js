@@ -15,6 +15,7 @@ import {
   TextField,
   makeStyles,
 } from "@material-ui/core";
+import Appbar from "./Navbar/Appbar";
 
 export default function QuestionForm() {
   const history = useHistory();
@@ -35,33 +36,40 @@ export default function QuestionForm() {
 
   return (
     <div>
-      <form className="form-signin" method="post" onSubmit={submitForm}>
-        <CardContent style={{ width: "100%", margin: "auto" }}>
-          <CardHeader
-            subheader="We will try to respond as soon as posible"
-            title="Ask us a question..."
-          />
-          <Link to={`/myProfile/${userService.getCurrentUser().id}`}>
-            Back to profile
-          </Link>
-          <div className="mb-3">
-            <label htmlFor="text" className="form-label">
-              Type your question
-            </label>
-            <textarea
-              style={{ width: "30%", height: "200px" }}
-              type="text"
-              className="form-control"
-              id="text"
-              name="text"
-              required
+      <Appbar />
+      <div
+        className="box"
+        style={{ width: "50%", margin: "0 auto", marginTop: "10%" }}
+      >
+        <Link to={`/myProfile/${userService.getCurrentUser().id}`}>
+          Back to profile
+        </Link>
+        <form className="form-signin" method="post" onSubmit={submitForm}>
+          <CardContent style={{ width: "100%", margin: "auto" }}>
+            <CardHeader
+              subheader="We will try to respond as soon as possible"
+              title="Ask us a question..."
             />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </CardContent>
-      </form>
+
+            <div className="mb-3">
+              <label htmlFor="text" className="form-label">
+                Type your question
+              </label>
+              <textarea
+                style={{ width: "100%", height: "200px" }}
+                type="text"
+                className="form-control"
+                id="text"
+                name="text"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </CardContent>
+        </form>
+      </div>
     </div>
   );
 }

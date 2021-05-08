@@ -12,6 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
+import Appbar from "../Navbar/Appbar";
 // import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -82,13 +83,7 @@ export default function QuestionsPage() {
           <TableBody>
             {appointments.map((a) => (
               <StyledTableRow key={currentUser.id}>
-
-                <StyledTableCell align="right"><Link
-                  to={`/myProfile/${currentUser.id}/appointments/${a.id}/details`}
-                  style={{ textDecoration: "none" }}
-                >
-                  {a.reason}
-                </Link></StyledTableCell>
+                <StyledTableCell align="right">{a.reason}</StyledTableCell>
                 <StyledTableCell align="right">
                   {formatDateWithoutTime(a.dateOfAppointment)}
                 </StyledTableCell>
@@ -100,10 +95,10 @@ export default function QuestionsPage() {
                   {a.accepted
                     ? "Accepted"
                     : !a.accepted && !a.declined
-                      ? "Waiting"
-                      : a.declined
-                        ? "Declined"
-                        : "Waiting"}
+                    ? "Waiting"
+                    : a.declined
+                    ? "Declined"
+                    : "Waiting"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {a.status ? "Finished" : "In progress"}
@@ -118,9 +113,12 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div className="container">
-      <h1>My appointments</h1>
-      {appointmentsTable()}
+    <div>
+      <Appbar />
+      <div className="container">
+        <h1 className="title">My appointments</h1>
+        {appointmentsTable()}
+      </div>
     </div>
   );
 }

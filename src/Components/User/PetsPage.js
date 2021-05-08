@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,11 +9,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
 // import Autocomplete from "@material-ui/lab/Autocomplete";
 import authHeader from "../Auth/Components/Service/auth-header";
 import AuthService from "../Auth/Components/Service/auth-service";
 import userService from "../User/Service/UserService";
+import Appbar from "../Navbar/Appbar";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -52,7 +51,10 @@ export default function PetsPage() {
   }, []);
 
   async function getUser() {
-    return userService.getUser(currentUser.id).then((res) => setuser(res.data)).then(getPets());
+    return userService
+      .getUser(currentUser.id)
+      .then((res) => setuser(res.data))
+      .then(getPets());
   }
 
   function getPets() {
@@ -78,7 +80,7 @@ export default function PetsPage() {
           </TableHead>
           <TableBody>
             {userPets.map((pet) => (
-              < StyledTableRow key={currentUser.id} >
+              <StyledTableRow key={currentUser.id}>
                 <StyledTableCell component="th" scope="row">
                   <Link
                     to={`/myProfile/${currentUser.id}/pets/${pet.id}/details`}
@@ -96,16 +98,17 @@ export default function PetsPage() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer >
+      </TableContainer>
     );
   }
 
   return (
     <div>
-      <Container maxWidth="lg" className="mt-4">
-        <h1>My pets</h1>
+      <Appbar />
+      <div className="container">
+        <h1 className="title">My pets</h1>
         {petTable()}
-      </Container>
+      </div>
     </div>
   );
 }
