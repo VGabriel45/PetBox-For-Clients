@@ -110,7 +110,7 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>My questions</h1>
       {questionsTable()}
     </div>

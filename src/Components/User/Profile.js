@@ -117,13 +117,6 @@ const Profile = ({ className, ...rest }) => {
         </Box>
       </CardContent>
       <Divider />
-      <CardActions></CardActions>
-      <input
-        type="file"
-        name="userImage"
-        id="userImage"
-        onChange={uploadImage}
-      />
       <CardActions>
         <Button color="primary" fullWidth variant="text">
           <Link to={`/myProfile/${currentUser.id}/makeAppointment`}>
@@ -136,6 +129,31 @@ const Profile = ({ className, ...rest }) => {
           </Link>
         </Button>
       </CardActions>
+      <Button
+        fullWidth
+        variant="contained"
+        style={{ backgroundColor: "white" }}
+      >
+        <Typography
+          className={classes.dateText}
+          color="textSecondary"
+          variant="body1"
+          style={{ color: "white" }}
+        >
+          <input
+            class="file-input"
+            type="file"
+            name="userImage"
+            onChange={uploadImage}
+          />
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">Replace profile image</span>
+          </span>
+        </Typography>
+      </Button>
       <Button color="primary" fullWidth variant="contained">
         <Typography
           className={classes.dateText}

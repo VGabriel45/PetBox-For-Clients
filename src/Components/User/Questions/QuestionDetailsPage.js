@@ -1,33 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import QuestionLogic from './QuestionLogic';
+import React, { useEffect, useState } from "react";
+import QuestionLogic from "./QuestionLogic";
 
-import AuthService from '../../Auth/Components/Service/auth-service';
+import AuthService from "../../Auth/Components/Service/auth-service";
+import { Container } from "@material-ui/core";
+import Appbar from "../../Navbar/Appbar";
 
 export default function QuestionDetailsPage(props) {
+  const {
+    match: { params },
+  } = props;
 
-    const {
-        match: { params },
-    } = props;
+  const questionId = params.questionId;
+  const currentUser = AuthService.getCurrentUser();
 
-    const questionId = params.questionId;
-    const currentUser = AuthService.getCurrentUser();
+  const { questionDetails, formatDateWithTime } = QuestionLogic({
+    customerId: currentUser.id,
+    questionId: questionId,
+  });
 
-    const { questionDetails } = QuestionLogic({ customerId: currentUser.id, questionId: questionId })
+  return (
+    <React.Fragment>
+      <Appbar />
+      <Container style={{ marginTop: "5%" }} className="box">
+        {questionDetails ? (
+          <div class="card-content">
+            <p className="title">Question: {questionDetails.text}</p>
+            <p class="title" style={{ marginLeft: "25px" }}>
+              {questionDetails.response.length > 0
+                ? "Response: " + questionDetails.response
+                : ""}
+            </p>
+            <br />
+            <p class="subtitle">{questionDetails.author}</p>
+            <p>
+              Question date:{" "}
+              <strong>{formatDateWithTime(questionDetails.date)}</strong>
+            </p>
+            {questionDetails.seen ? (
+              <p style={{ color: "green" }}>Seen</p>
+            ) : (
+              <p style={{ color: "red" }}>Not seen</p>
+            )}
 
-    return (
-        <React.Fragment>
-            {console.log(questionId)}
-            {console.log(currentUser)}
-            {questionDetails ?
-                <div>
-                    <h3>Question: {questionDetails.text}</h3>
-                    <h4>Date: {questionDetails.date}</h4>
-                    <p>Visibility: {questionDetails.seen ? "Seen" : "Not seen"}</p>
-                    <p>Status: {questionDetails.status ? "Solved" : "Not solved"}</p>
-                    <h4>Response: {questionDetails.response}</h4>
-                </div>
-                : "Loading..."}
-        </React.Fragment>
-
-    );
+            {questionDetails.solved ? (
+              <p style={{ color: "green" }}>Solved</p>
+            ) : (
+              <p style={{ color: "red" }}>Not solved</p>
+            )}
+          </div>
+        ) : (
+          "Loading..."
+        )}
+      </Container>
+    </React.Fragment>
+  );
 }

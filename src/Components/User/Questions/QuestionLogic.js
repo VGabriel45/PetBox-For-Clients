@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import authHeader from '../../Auth/Components/Service/auth-header';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import authHeader from "../../Auth/Components/Service/auth-header";
 
 const API_URL = "http://localhost:8080/customers";
 
 const QuestionLogic = ({ customerId, questionId }) => {
+  const [questionDetails, setquestionDetails] = useState();
 
-    const [questionDetails, setquestionDetails] = useState();
+  useEffect(() => {
+    getQuestionDetails();
+  }, []);
 
-    useEffect(() => {
-        getQuestionDetails();
-    }, [])
+  const getQuestionDetails = () => {
+    axios
+      .get(API_URL + `/${customerId}/questions/${questionId}`, {
+        headers: authHeader(),
+      })
+      .then((res) => setquestionDetails(res.data));
+  };
 
-    const getQuestionDetails = () => {
-        axios.get(API_URL + `/${customerId}/questions/${questionId}`, {
-            headers: authHeader(),
-        }).then((res) => setquestionDetails(res.data));
-    };
+  function formatDateWithTime(date) {
+    var dateFormat = require("dateformat");
+    var parsedDate = new Date(date);
+    return dateFormat(parsedDate, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+  }
 
-    return { questionDetails };
-
-}
+  return { questionDetails, formatDateWithTime };
+};
 
 export default QuestionLogic;
