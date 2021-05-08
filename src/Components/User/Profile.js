@@ -47,7 +47,7 @@ const Profile = ({ className, ...rest }) => {
 
   async function getUser() {
     return userService.getUser(currentUser.id).then((res) => {
-      setuser(res.data)
+      setuser(res.data);
     });
   }
 
@@ -91,18 +91,22 @@ const Profile = ({ className, ...rest }) => {
     let storageRef = firebase.storage().ref();
     let fileRef = storageRef.child(user.id);
     await fileRef.put(file);
-    console.log("uploading image")
+    console.log("uploading image");
     // window.location.reload();
   }
 
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card className={clsx(className)} {...rest}>
       <CardContent>
         <Box alignItems="center" display="flex" flexDirection="column">
           <Avatar
             className={classes.avatar}
             // src={userImage}
-            src={userImage ? userImage : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4dQNbXUtTsaOUYmhy4VasurnACeQpjbg9Qw&usqp=CAU"}
+            src={
+              userImage
+                ? userImage
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4dQNbXUtTsaOUYmhy4VasurnACeQpjbg9Qw&usqp=CAU"
+            }
           />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {user.username}
@@ -114,7 +118,12 @@ const Profile = ({ className, ...rest }) => {
       </CardContent>
       <Divider />
       <CardActions></CardActions>
-      <input type="file" name="userImage" id="userImage" onChange={uploadImage} />
+      <input
+        type="file"
+        name="userImage"
+        id="userImage"
+        onChange={uploadImage}
+      />
       <CardActions>
         <Button color="primary" fullWidth variant="text">
           <Link to={`/myProfile/${currentUser.id}/makeAppointment`}>

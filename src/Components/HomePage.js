@@ -21,14 +21,6 @@ export default function WelcomePage() {
               clinicEmail={clinic.email}
               clinicDescription={clinic.description}
             />
-            // <div
-            //   style={{ backgroundColor: "gray", margin: "10px", width: "25%" }}
-            // >
-            //   <p>{clinic.clinicName}</p>
-            //   <p>{clinic.email}</p>
-            //   {/* {clinic.image ? console.log(clinic.image) : console.log("loading")} */}
-            //   {console.log(clinic)}
-            // </div>
           ))
         : "Loading..."}
     </React.Fragment>

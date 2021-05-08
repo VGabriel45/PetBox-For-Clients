@@ -18,7 +18,7 @@ const Account = () => {
   const classes = useStyles();
 
   return (
-    <Page className={classes.root} title="Account">
+    <Page title="Account">
       <Appbar />
       <Container maxWidth="lg">
         <Grid container spacing={3}>
