@@ -4,30 +4,31 @@ import { useHistory } from "react-router-dom";
 import AuthService from "../Auth/Components/Service/auth-service";
 import { Link } from "react-router-dom";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
-  TextField,
-  makeStyles,
-} from "@material-ui/core";
+import { CardContent, CardHeader, Grid } from "@material-ui/core";
 import Appbar from "../Navbar/Appbar";
+import LinearBuffer from "../LoadingComponents/LinearBuffer";
 
 export default function AppointmentForm() {
   const history = useHistory();
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
   const [customerPets, setcustomerPets] = useState({});
+  const [appointmentSent, setappointmentSent] = useState(false);
+  const [notification, setnotification] = useState("");
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     getCustomerPets();
-  }, []);
+  }, [appointmentSent]);
 
   function submitForm(e) {
     e.preventDefault();
+    setloading(true);
+    setTimeout(() => {
+      setappointmentSent(true);
+      setnotification("You made an appointment !");
+      setloading(false);
+    }, 1500);
+
     const data = new FormData(e.target);
 
     userService.makeAppointment(
@@ -36,7 +37,6 @@ export default function AppointmentForm() {
       data.get("date"),
       data.get("time")
     );
-    history.push(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   async function getCustomerPets() {
@@ -67,6 +67,7 @@ export default function AppointmentForm() {
                   className="form-control"
                   id="reason"
                   name="reason"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -78,6 +79,7 @@ export default function AppointmentForm() {
                   className="form-control"
                   id="date"
                   name="date"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -89,6 +91,7 @@ export default function AppointmentForm() {
                   className="form-control"
                   id="time"
                   name="time"
+                  required
                 />
               </div>
               {console.log(customerPets)}
@@ -99,6 +102,19 @@ export default function AppointmentForm() {
             </Grid>
           </CardContent>
         </form>
+        {loading ? (
+          <LinearBuffer />
+        ) : (
+          <div>
+            {appointmentSent ? (
+              <div class="notification is-primary">
+                <h2>{notification}</h2>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

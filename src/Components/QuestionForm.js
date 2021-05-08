@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import userService from "./User/Service/UserService";
 import { useHistory } from "react-router-dom";
 import AuthService from "./Auth/Components/Service/auth-service";
@@ -16,12 +16,22 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import Appbar from "./Navbar/Appbar";
+import LinearBuffer from "./LoadingComponents/LinearBuffer";
 
 export default function QuestionForm() {
   const history = useHistory();
+  const [notification, setnotification] = useState("");
+  const [questionSent, setquestionSent] = useState(false);
+  const [loading, setloading] = useState(false);
 
   function submitForm(e) {
     e.preventDefault();
+    setloading(true);
+    setTimeout(() => {
+      setquestionSent(true);
+      setnotification("Question has been sent.");
+      setloading(false);
+    }, 1500);
     const data = new FormData(e.target);
 
     userService.sendQuestion(
@@ -30,8 +40,6 @@ export default function QuestionForm() {
       data.get("text"),
       new Date()
     );
-
-    history.push(`/myProfile/${AuthService.getCurrentUser().id}`);
   }
 
   return (
@@ -69,6 +77,19 @@ export default function QuestionForm() {
             </button>
           </CardContent>
         </form>
+        {loading ? (
+          <LinearBuffer />
+        ) : (
+          <div>
+            {questionSent ? (
+              <div class="notification is-primary">
+                <h2>{notification}</h2>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
