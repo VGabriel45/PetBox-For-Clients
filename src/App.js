@@ -14,12 +14,18 @@ import PetDetailsPage from "./Components/User/Pets/PetDetailsPage";
 import QuestionDetailsPage from "./Components/User/Questions/QuestionDetailsPage";
 import AppointmentDetailsPage from "./Components/User/Appointments/AppointmentDetailsPage";
 import LoginPage from "./Components/Auth/Components/LoginPage";
+import LandingPage from "./LandingPage/LandingPage";
+import ClinicPage from "./LandingPage/ClinicPage";
+import CustomerPage from "./LandingPage/CustomerPage";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={HomePage} />
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/landingPage" exact component={LandingPage} />
+        <Route path="/customerPage" exact component={CustomerPage} />
+        <Route path="/clinicPage" exact component={ClinicPage} />
         <Route path="/home" exact component={HomePage} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/myProfile/:id" exact component={Profile} />

@@ -33,8 +33,12 @@ export default function Appbar() {
   }
 
   return (
-    <div>
-      <AppBar position="static" style={{ marginBottom: "3%" }}>
+    <>
+      <AppBar
+        position="static"
+        style={{ marginBottom: "3%" }}
+        style={{ background: "orange" }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -115,6 +119,6 @@ export default function Appbar() {
           )}
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   );
 }
