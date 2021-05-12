@@ -2,13 +2,14 @@ import React from "react";
 import LandingPageLogic from "./LandingPageLogic";
 
 import "../Styles/LandingPage.css";
+import LandingPageNavbar from "../Components/Navbar/LandingPageNavbar";
 
 const LandingPage = () => {
   const { redirectToClinicPage, redirectToCustomerPage } = LandingPageLogic();
 
   return (
     <div>
-      {/* <NavigationBar /> */}
+      <LandingPageNavbar />
       <section>
         <div className="circle"></div>
         <div className="content">

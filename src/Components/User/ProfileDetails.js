@@ -73,7 +73,12 @@ const ProfileDetails = () => {
   return (
     <form className="form-signin" onSubmit={submitForm}>
       <Box display="flex" justifyContent="flex-end" p={2}>
-        <Button className="btn btn-primary" color="primary" variant="contained">
+        <Button
+          className="btn btn-primary"
+          color="primary"
+          variant="contained"
+          style={{ background: "#FF8C00" }}
+        >
           <Link to="/" style={{ color: "white" }}>
             Home page
           </Link>
@@ -244,6 +249,7 @@ const ProfileDetails = () => {
               className="btn btn-primary"
               color="primary"
               variant="contained"
+              style={{ background: "#FF8C00" }}
             >
               Save details
             </Button>

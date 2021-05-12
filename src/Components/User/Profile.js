@@ -101,7 +101,6 @@ const Profile = ({ className, ...rest }) => {
         <Box alignItems="center" display="flex" flexDirection="column">
           <Avatar
             className={classes.avatar}
-            // src={userImage}
             src={
               userImage
                 ? userImage
@@ -147,7 +146,12 @@ const Profile = ({ className, ...rest }) => {
           />
         </span>
       </Button>
-      <Button color="primary" fullWidth variant="contained">
+      <Button
+        color="primary"
+        fullWidth
+        variant="contained"
+        style={{ background: "#FF8C00" }}
+      >
         <Typography
           className={classes.dateText}
           color="textSecondary"

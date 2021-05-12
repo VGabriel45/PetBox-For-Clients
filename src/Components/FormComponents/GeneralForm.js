@@ -37,7 +37,7 @@ const GeneralForm = () => {
   };
 
   const redirectUser = async () => {
-    await history.push(`/`);
+    await history.push(`/myProfile`);
   };
 
   const onChangePassword = async (e) => {
@@ -59,7 +59,13 @@ const GeneralForm = () => {
           <label class="label">Username</label>
           <div class="control has-icons-left has-icons-right">
             <input
-              class={usernameValid ? "input is-primary" : "input is-danger"}
+              class={
+                username.length > 0
+                  ? usernameValid
+                    ? "input is-primary"
+                    : "input is-danger"
+                  : "input "
+              }
               type="text"
               placeholder="Username"
               onChange={onChangeUsername}
@@ -73,22 +79,31 @@ const GeneralForm = () => {
               <i class="fas fa-check"></i>
             </span>
           </div>
-          {/* {console.log(usernameExists)} */}
-          {usernameValid === true ? (
-            <p class="help is-success">Valid username</p>
+          {username.length > 0 ? (
+            usernameValid === true ? (
+              <p class="help is-success">Valid username</p>
+            ) : (
+              <p class="help is-danger">
+                Username must be between 10 and 25 characters and must have the
+                following format {"{username} - {clinic name}"}
+              </p>
+            )
           ) : (
-            <p class="help is-danger">
-              Username must be between 10 and 25 characters and must have the
-              following format {"{username} - {clinic name}"}
-            </p>
+            ""
           )}
         </div>
-
+        <br />
         <div class="field">
           <label class="label">Password</label>
           <div class="control has-icons-left has-icons-right">
             <input
-              class={passwordValid ? "input is-primary" : "input is-danger"}
+              class={
+                password.length > 0
+                  ? passwordValid
+                    ? "input is-primary"
+                    : "input is-danger"
+                  : "input"
+              }
               type="password"
               placeholder="Type your password"
               onChange={onChangePassword}
@@ -101,30 +116,30 @@ const GeneralForm = () => {
               <i class="fas fa-exclamation-triangle"></i>
             </span>
           </div>
-          {passwordValid === true ? (
-            <p class="help is-success">Valid password</p>
+          {password.length > 0 ? (
+            passwordValid === true ? (
+              <p class="help is-success">Valid password</p>
+            ) : (
+              <p class="help is-danger">
+                Must match the password sent on your email
+              </p>
+            )
           ) : (
-            <p class="help is-danger">
-              Must match the password sent on your email
-            </p>
+            ""
           )}
         </div>
-
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox" />I agree to the{" "}
-              <a href="#">terms and conditions</a>
-            </label>
-          </div>
-        </div>
-
+        <br />
         <div class="field is-grouped">
           <div class="control">
             <button class="button is-link">Submit</button>
           </div>
-          <div class="control">
-            <button class="button is-link is-light">Cancel</button>
+          <div class="control" style={{ width: "100%" }}>
+            <button
+              class="button is-link is-light"
+              style={{ marginLeft: "60%" }}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       </form>

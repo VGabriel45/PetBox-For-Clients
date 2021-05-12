@@ -5,20 +5,23 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import GeneralForm from "../../FormComponents/GeneralForm";
 import Appbar from "../../Navbar/Appbar";
 
+import "../../../Styles/FormBackground.css";
+
 const avatarStyle = {
   backgroundColor: "#6c93ea",
 };
 
 const Login = () => {
   return (
-    <div>
+    <div className="formDiv">
       {" "}
       <Appbar />
+      <div style={{ marginTop: "15%" }}></div>
       <div
         className="container is-max-desktop box mt-5"
-        style={{ width: "40%" }}
+        style={{ width: "30%" }}
       >
-        <Grid align="center" className="mt-2">
+        <Grid align="center" className="mt-5">
           <Avatar style={avatarStyle}>
             <LockOpenIcon></LockOpenIcon>
           </Avatar>

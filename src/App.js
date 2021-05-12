@@ -28,6 +28,7 @@ function App() {
         <Route path="/clinicPage" exact component={ClinicPage} />
         <Route path="/home" exact component={HomePage} />
         <Route path="/login" exact component={LoginPage} />
+        <Route path="/myProfile" exact component={Profile} />
         <Route path="/myProfile/:id" exact component={Profile} />
         <Route path="/myProfile/:id/update" exact component={EditProfilePage} />
         <Route

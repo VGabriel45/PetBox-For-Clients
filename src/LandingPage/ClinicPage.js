@@ -2,12 +2,14 @@ import React from "react";
 import LandingPageLogic from "./LandingPageLogic";
 
 import "../Styles/LandingPage.css";
+import LandingPageNavbar from "../Components/Navbar/LandingPageNavbar";
 
 const ClinicPage = () => {
   const { redirectToClinicPage, redirectToCustomerPage } = LandingPageLogic();
 
   return (
     <div>
+      <LandingPageNavbar />
       <section>
         <div className="circle"></div>
         <div className="content">
@@ -36,6 +38,7 @@ const ClinicPage = () => {
                 src="https://i.pinimg.com/originals/d6/11/3b/d6113b031ac40ecc19a85eda0ae55436.png"
                 alt="pet"
                 className="petImage"
+                style={{ marginTop: "-110px" }}
               />
             </div>
           </a>
