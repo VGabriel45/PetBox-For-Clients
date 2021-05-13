@@ -8,4 +8,4 @@ You can also manage your employee database through PetBox very easily.
 The application is divided in 2 parts, the Admin Side and the Client Side, admin side is for clinics to manage their business and client side is for normal users, as a customer I am going to be asked if I agree to be registered on PetBox for the specific clinic, after that I will receive an email with my password and username and from there begins the login process.
 On the client side we can see our profile, appointments details, questions asked and pet details.
 
-![](![image](https://user-images.githubusercontent.com/56271768/118109390-ccd20580-b3e9-11eb-8a7b-a3d7e46cc9e1.png)
+![image](https://user-images.githubusercontent.com/56271768/118109390-ccd20580-b3e9-11eb-8a7b-a3d7e46cc9e1.png)
