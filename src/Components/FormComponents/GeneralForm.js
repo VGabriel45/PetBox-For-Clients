@@ -55,11 +55,11 @@ const GeneralForm = () => {
   return (
     <React.Fragment>
       <form onSubmit={login}>
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
+        <div className="field">
+          <label className="label">Username</label>
+          <div className="control has-icons-left has-icons-right">
             <input
-              class={
+              className={
                 username.length > 0
                   ? usernameValid
                     ? "input is-primary"
@@ -72,18 +72,18 @@ const GeneralForm = () => {
               value={username}
               name="name"
             />
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
+            <span className="icon is-small is-left">
+              <i className="fas fa-user"></i>
             </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
+            <span className="icon is-small is-right">
+              <i className="fas fa-check"></i>
             </span>
           </div>
           {username.length > 0 ? (
             usernameValid === true ? (
-              <p class="help is-success">Valid username</p>
+              <p className="help is-success">Valid username</p>
             ) : (
-              <p class="help is-danger">
+              <p className="help is-danger">
                 Username must be between 10 and 25 characters and must have the
                 following format {"{username} - {clinic name}"}
               </p>
@@ -93,11 +93,11 @@ const GeneralForm = () => {
           )}
         </div>
         <br />
-        <div class="field">
-          <label class="label">Password</label>
-          <div class="control has-icons-left has-icons-right">
+        <div className="field">
+          <label className="label">Password</label>
+          <div className="control has-icons-left has-icons-right">
             <input
-              class={
+              className={
                 password.length > 0
                   ? passwordValid
                     ? "input is-primary"
@@ -109,18 +109,18 @@ const GeneralForm = () => {
               onChange={onChangePassword}
               value={password}
             />
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
+            <span className="icon is-small is-left">
+              <i className="fas fa-envelope"></i>
             </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-exclamation-triangle"></i>
+            <span className="icon is-small is-right">
+              <i className="fas fa-exclamation-triangle"></i>
             </span>
           </div>
           {password.length > 0 ? (
             passwordValid === true ? (
-              <p class="help is-success">Valid password</p>
+              <p className="help is-success">Valid password</p>
             ) : (
-              <p class="help is-danger">
+              <p className="help is-danger">
                 Must match the password sent on your email
               </p>
             )
@@ -129,13 +129,13 @@ const GeneralForm = () => {
           )}
         </div>
         <br />
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Submit</button>
+        <div className="field is-grouped">
+          <div className="control">
+            <button className="button is-link">Submit</button>
           </div>
-          <div class="control" style={{ width: "100%" }}>
+          <div className="control" style={{ width: "100%" }}>
             <button
-              class="button is-link is-light"
+              className="button is-link is-light"
               style={{ marginLeft: "60%" }}
             >
               Cancel

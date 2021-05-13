@@ -20,7 +20,7 @@ import authService from "../Auth/Components/Service/auth-service";
 
 const ProfileDetails = () => {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
-  const [user, setuser] = useState({});
+  const [user, setuser] = useState({ value: "" });
 
   const history = useHistory();
 

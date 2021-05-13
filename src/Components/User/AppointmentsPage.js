@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../../Auth/Components/Service/auth-service";
-import userService from "../../User/Service/UserService";
+import AuthService from "../Auth/Components/Service/auth-service";
+import userService from "../User/Service/UserService";
 import { Link } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -9,7 +9,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
+import Appbar from "../Navbar/Appbar";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -64,6 +68,7 @@ export default function QuestionsPage() {
   function appointmentsTable() {
     return (
       <TableContainer component={Paper}>
+        <Link to={`/myProfile/${currentUser.id}`}>Back to profile</Link>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -98,6 +103,7 @@ export default function QuestionsPage() {
                 <StyledTableCell align="right">
                   {a.status ? "Finished" : "In progress"}
                 </StyledTableCell>
+                {console.log(a)}
               </StyledTableRow>
             ))}
           </TableBody>
@@ -107,7 +113,8 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div>
+      <Appbar />
       <div className="container">
         <h1 className="title">My appointments</h1>
         {appointmentsTable()}

@@ -29,10 +29,10 @@ const useStyles = makeStyles(() => ({
 
 const Profile = ({ className, ...rest }) => {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
-  const [user, setuser] = useState({});
-  const [userPets, setuserPets] = useState([]);
-  const [appointments, setappointments] = useState([]);
-  const [questions, setquestions] = useState([]);
+  const [user, setuser] = useState({ value: "" });
+  const [userPets, setuserPets] = useState([""]);
+  const [appointments, setappointments] = useState([""]);
+  const [questions, setquestions] = useState([""]);
   const [userImage, setuserImage] = useState("");
   const classes = useStyles();
 
@@ -90,8 +90,6 @@ const Profile = ({ className, ...rest }) => {
     let storageRef = firebase.storage().ref();
     let fileRef = storageRef.child(user.id);
     await fileRef.put(file);
-    console.log("uploading image");
-    // window.location.reload();
   }
 
   return (
@@ -132,13 +130,13 @@ const Profile = ({ className, ...rest }) => {
         variant="contained"
         style={{ backgroundColor: "white" }}
       >
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
+        <span className="file-cta">
+          <span className="file-icon">
+            <i className="fas fa-upload"></i>
           </span>
-          <span class="file-label">Replace profile image</span>
+          <span className="file-label">Replace profile image</span>
           <input
-            class="file-input"
+            className="file-input"
             type="file"
             name="userImage"
             onChange={uploadImage}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../../Auth/Components/Service/auth-service";
-import userService from "../../User/Service/UserService";
+import AuthService from "../Auth/Components/Service/auth-service";
+import userService from "../User/Service/UserService";
 import { Link } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -9,7 +9,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
+import Appbar from "../Navbar/Appbar";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -38,66 +42,66 @@ const useStyles = makeStyles({
 export default function QuestionsPage() {
   const [currentUser, setcurrentUser] = useState(AuthService.getCurrentUser());
   const [user, setuser] = useState({});
-  const [appointments, setappointments] = useState([]);
+  const [questions, setquestions] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     getUser();
-    getCustomerAppointments();
+    getCustomerQuestions();
   }, []);
 
   async function getUser() {
     return userService.getUser(currentUser.id).then((res) => setuser(res.data));
   }
 
-  function getCustomerAppointments() {
+  function getCustomerQuestions() {
     return userService
-      .getCustomerAppointments(currentUser.id)
-      .then((res) => setappointments(res.data));
+      .getCustomerQuestions(currentUser.id, setquestions)
+      .then((res) => setquestions(res.data));
   }
 
-  function formatDateWithoutTime(date) {
+  function formatDateWithTime(date) {
+    var dateFormat = require("dateformat");
     var parsedDate = new Date(date);
-    return parsedDate.toLocaleDateString();
+    return dateFormat(parsedDate, "dddd, mmmm dS, yyyy, h:MM:ss TT");
   }
 
-  function appointmentsTable() {
+  function questionsTable() {
     return (
       <TableContainer component={Paper}>
+        <Link to={`/myProfile/${currentUser.id}`}>Back to profile</Link>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="right">Reason</StyledTableCell>
+              <StyledTableCell>Question</StyledTableCell>
               <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Hour</StyledTableCell>
               <StyledTableCell align="right">Seen</StyledTableCell>
-              <StyledTableCell align="right">Confirmation</StyledTableCell>
               <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="right">Response</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {appointments.map((a) => (
+            {questions.map((q) => (
               <StyledTableRow key={currentUser.id}>
-                <StyledTableCell align="right">{a.reason}</StyledTableCell>
-                <StyledTableCell align="right">
-                  {formatDateWithoutTime(a.dateOfAppointment)}
-                </StyledTableCell>
-                <StyledTableCell align="right">{a.hour}</StyledTableCell>
-                <StyledTableCell align="right">
-                  {a.seen ? "Seen" : "Not seen"}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {a.accepted
-                    ? "Accepted"
-                    : !a.accepted && !a.declined
-                    ? "Waiting"
-                    : a.declined
-                    ? "Declined"
-                    : "Waiting"}
+                <StyledTableCell component="th" scope="row">
+                  <Link
+                    to={`/myProfile/${currentUser.id}/questions/${q.id}/details`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {q.text}
+                  </Link>
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  {a.status ? "Finished" : "In progress"}
+                  {formatDateWithTime(q.date)}
                 </StyledTableCell>
+                <StyledTableCell align="right">
+                  {q.seen ? "Seen" : "Not seen"}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {q.solved ? "Solved" : "Waiting"}
+                </StyledTableCell>
+                <StyledTableCell align="right">{q.response}</StyledTableCell>
+                {console.log(q)}
               </StyledTableRow>
             ))}
           </TableBody>
@@ -107,10 +111,11 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div>
+      <Appbar />
       <div className="container">
-        <h1 className="title">My appointments</h1>
-        {appointmentsTable()}
+        <h1 className="title">My questions</h1>
+        {questionsTable()}
       </div>
     </div>
   );
