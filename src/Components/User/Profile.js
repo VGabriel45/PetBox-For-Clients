@@ -14,7 +14,6 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import ProfileDetails from "./ProfileDetails";
 import userService from "../User/Service/UserService";
 import AuthService from "../Auth/Components/Service/auth-service";
 

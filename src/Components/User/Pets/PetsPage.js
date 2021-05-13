@@ -1,22 +1,11 @@
 import React from "react";
 import { Container, Grid, makeStyles } from "@material-ui/core";
-import Page from "../../../src/Components/Page";
-import Profile from "./Profile";
-import ProfileDetails from "./ProfileDetails";
-import Appbar from "../Navbar/Appbar";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    minHeight: "100%",
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3),
-  },
-}));
+import Page from "../../Page";
+import Profile from "../Profile";
+import Appbar from "../../Navbar/Appbar";
+import PetsTable from "./PetsTable";
 
 const Account = () => {
-  const classes = useStyles();
-
   return (
     <Page title="Account">
       <Appbar />
@@ -26,7 +15,7 @@ const Account = () => {
             <Profile />
           </Grid>
           <Grid item lg={8} md={6} xs={12}>
-            <ProfileDetails />
+            <PetsTable />
           </Grid>
         </Grid>
       </Container>

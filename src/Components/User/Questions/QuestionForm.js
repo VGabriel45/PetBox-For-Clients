@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import userService from "./User/Service/UserService";
+import userService from "../../User/Service/UserService";
 import { useHistory } from "react-router-dom";
-import AuthService from "./Auth/Components/Service/auth-service";
 import { Link } from "react-router-dom";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
-  TextField,
-  makeStyles,
-} from "@material-ui/core";
-import Appbar from "./Navbar/Appbar";
-import LinearBuffer from "./LoadingComponents/LinearBuffer";
+import { CardContent, CardHeader } from "@material-ui/core";
+import Appbar from "../../Navbar/Appbar";
+import LinearBuffer from "../../LoadingComponents/LinearBuffer";
 
 export default function QuestionForm() {
   const history = useHistory();

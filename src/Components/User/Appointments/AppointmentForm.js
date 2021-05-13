@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import userService from "./Service/UserService";
+import userService from "../Service/UserService";
 import { useHistory } from "react-router-dom";
-import AuthService from "../Auth/Components/Service/auth-service";
+import AuthService from "../../Auth/Components/Service/auth-service";
 import { Link } from "react-router-dom";
 
 import { CardContent, CardHeader, Grid } from "@material-ui/core";
-import Appbar from "../Navbar/Appbar";
-import LinearBuffer from "../LoadingComponents/LinearBuffer";
+import Appbar from "../../Navbar/Appbar";
+import LinearBuffer from "../../LoadingComponents/LinearBuffer";
 
 export default function AppointmentForm() {
   const history = useHistory();

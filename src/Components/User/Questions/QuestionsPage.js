@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Grid, makeStyles } from "@material-ui/core";
-import Page from "../Page";
-import Profile from "./Profile";
-import ProfileDetails from "./ProfileDetails";
-import Appbar from "../Navbar/Appbar";
+import Page from "../../Page";
+import Profile from "../Profile";
+import QuestionsTable from "./QuestionsTable";
+import Appbar from "../../Navbar/Appbar";
 
 const Account = () => {
   return (
@@ -15,7 +15,7 @@ const Account = () => {
             <Profile />
           </Grid>
           <Grid item lg={8} md={6} xs={12}>
-            <ProfileDetails />
+            <QuestionsTable />
           </Grid>
         </Grid>
       </Container>

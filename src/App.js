@@ -1,15 +1,12 @@
 import "./App.css";
-import HomePage from "./Components/HomePage";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProfilePage from "./Components/User/ProfilePage";
-import EditProfilePage from "./Components/User/EditProfilePage";
-import Profile from "./Components/User/index";
-import AppointmentForm from "./Components/User/AppointmentForm";
-import QuestionForm from "./Components/QuestionForm";
-import PetsPage from "./Components/User/PetsPage";
-import QuestionsPage from "./Components/User/QuestionsPage";
-import AppointmentsPage from "./Components/User/AppointmentsPage";
+import Profile from "./Components/User/ProfilePage";
+import AppointmentForm from "./Components/User/Appointments/AppointmentForm";
+import QuestionForm from "./Components/User/Questions/QuestionForm";
+import PetsPage from "./Components/User/Pets/PetsPage";
+import QuestionsPage from "./Components/User/Questions/QuestionsPage";
+import AppointmentsPage from "./Components/User/Appointments/AppointmentsPage";
 import PetDetailsPage from "./Components/User/Pets/PetDetailsPage";
 import QuestionDetailsPage from "./Components/User/Questions/QuestionDetailsPage";
 import AppointmentDetailsPage from "./Components/User/Appointments/AppointmentDetailsPage";
@@ -26,11 +23,9 @@ function App() {
         <Route path="/landingPage" exact component={LandingPage} />
         <Route path="/customerPage" exact component={CustomerPage} />
         <Route path="/clinicPage" exact component={ClinicPage} />
-        <Route path="/home" exact component={HomePage} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/myProfile" exact component={Profile} />
         <Route path="/myProfile/:id" exact component={Profile} />
-        <Route path="/myProfile/:id/update" exact component={EditProfilePage} />
         <Route
           path="/myProfile/:id/makeAppointment"
           exact

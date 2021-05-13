@@ -21,7 +21,7 @@ export default function QuestionDetailsPage(props) {
   return (
     <React.Fragment>
       <Appbar />
-      <Container style={{ marginTop: "5%" }} className="box">
+      <Container style={{ marginTop: "5%" }}>
         {questionDetails ? (
           <div class="card-content">
             <p className="title">Question: {questionDetails.text}</p>
